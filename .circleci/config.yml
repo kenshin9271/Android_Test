@@ -1,39 +1,54 @@
+# version: 2.1
+# orbs:
+#   android: circleci/android@1.0.3
+  
+# workflows:
+#   test-deploy:
+#     jobs:
+#       - test
+#       - test2
+      
+# jobs:
+#     test:
+#       docker:
+#         - image: appium/appium:latest
+#       steps:
+#         - checkout
+#         - run: appium -v
+#         - run: node -v
+#         - run: python3 --version
+#         - run: npm install -g appium-doctor
+#         - run: appium-doctor
+     
+#     test2:
+#         executor:
+#           name: android/android-machine
+#           resource-class: large
+#         steps:
+#           - checkout
+#           - android/create-avd:
+#               avd-name: myavd
+#               install: true
+#               system-image: system-images;android-29;default;x86
+#           - android/start-emulator:
+#               avd-name: myavd
+#               no-window: true
+#               restore-gradle-cache-prefix: v1a
+#           - android/run-tests
+#           - android/save-gradle-cache:
+#               cache-prefix: v1a
+              
+              
+              
+# .circleci/config.yaml
 version: 2.1
 orbs:
   android: circleci/android@1.0.3
-  
 workflows:
-  test-deploy:
+  test:
     jobs:
-      - test
-      - test2
-      
-jobs:
-    test:
-      docker:
-        - image: appium/appium:latest
-      steps:
-        - checkout
-        - run: appium -v
-        - run: node -v
-        - run: python3 --version
-        - run: npm install -g appium-doctor
-        - run: appium-doctor
-     
-    test2:
-        executor:
-          name: android/android-machine
-          resource-class: large
-        steps:
-          - checkout
-          - android/create-avd:
-              avd-name: myavd
-              install: true
-              system-image: system-images;android-29;default;x86
-          - android/start-emulator:
-              avd-name: myavd
-              no-window: true
-              restore-gradle-cache-prefix: v1a
-          - android/run-tests
-          - android/save-gradle-cache:
-              cache-prefix: v1a
+      # This job uses the Android machine image by default
+      - android/run-ui-tests:
+          # Use pre-steps and post-steps if necessary
+          # to execute custom steps before and afer any of the built-in steps
+          system-image: system-images;android-29;default;x86
