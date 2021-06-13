@@ -1,60 +1,31 @@
-# version: 2.1
-# orbs:
-#   android: circleci/android@1.0.3
-  
-# workflows:
-#   test-deploy:
-#     jobs:
-#       - test
-#       - test2
-      
-# jobs:
-#     test:
-#       docker:
-#         - image: appium/appium:latest
-#       steps:
-#         - checkout
-#         - run: appium -v
-#         - run: node -v
-#         - run: python3 --version
-#         - run: npm install -g appium-doctor
-#         - run: appium-doctor
-     
-#     test2:
-#         executor:
-#           name: android/android-machine
-#           resource-class: large
-#         steps:
-#           - checkout
-#           - android/create-avd:
-#               avd-name: myavd
-#               install: true
-#               system-image: system-images;android-29;default;x86
-#           - android/start-emulator:
-#               avd-name: myavd
-#               no-window: true
-#               restore-gradle-cache-prefix: v1a
-#           - android/run-tests
-#           - android/save-gradle-cache:
-#               cache-prefix: v1a
-              
-              
-              
-# .circleci/config.yaml
 version: 2.1
 orbs:
   android: circleci/android@1.0.3
+  
 workflows:
   test-deploy:
     jobs:
-      - android-test
+#       - test
+      - test2
+      
 jobs:
-  android-test:
-    executor:
-      name: android/android-machine
-      resource-class: xlarge
-    steps:
-      - checkout
-      - android/start-emulator-and-run-tests:
-          test-command: ./gradlew connectedDebugAndroidTest
-          system-image: system-images;android-30;google_apis;x86
+    test:
+      docker:
+        - image: appium/appium:latest
+      steps:
+        - checkout
+        - run: appium -v
+        - run: node -v
+        - run: python3 --version
+        - run: npm install -g appium-doctor
+        - run: appium-doctor
+     
+    test2:
+      docker:
+        - image: circleci/android:api-30-node
+      steps:
+        - checkout
+        
+              
+              
+              
