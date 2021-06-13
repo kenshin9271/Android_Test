@@ -10,10 +10,8 @@ jobs:
     test:
       docker:
           - image: appium/appium:latest
-          - image: cimg/python:3.9.5
       steps:
         - checkout
         - run: appium -v
         - run: node -v
-        - run: sudo apt-get install python3-pip
-        - run: python --version
+        - run: python3 --version
