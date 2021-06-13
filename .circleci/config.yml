@@ -13,3 +13,4 @@ jobs:
       - checkout
       - run: appium -v
       - run: node -v
+      - run: python --version
