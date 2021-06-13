@@ -9,6 +9,8 @@ jobs:
   test:
     docker:
         - image: appium/appium:latest
+        - image: cimg/node:16.3.0
     steps:
       - checkout
-      - run: appium
+      - run: appium -v
+      - run: node -v
