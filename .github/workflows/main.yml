@@ -5,10 +5,8 @@ jobs:
   Sauce Labs App Automate:
     runs-on: ubuntu-latest
     name: Appium Test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          - ref: 'main'
-       - name: Install and Run Appium Server
-         uses: moatazeldebsy/appium-server-gitHub-action@V1.0.4
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install and Run Appium Server
+      uses: moatazeldebsy/appium-server-gitHub-action@V1.0.4
