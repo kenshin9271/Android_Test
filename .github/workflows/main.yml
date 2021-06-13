@@ -20,11 +20,8 @@ jobs:
       run: |
         chmod +x ./scripts/RunAppiumServer.sh
         ./scripts/RunAppiumServer.sh
-    - name: Run Appium Tests
-      uses: reactivecircus/android-emulator-runner@v1 # install and create the Emulator
-      with:
-        api-level: ${{ matrix.api-level }}
-        target: ${{ matrix.target }}
-        arch: x86_64
-        profile: Nexus 6
-        script: ./gradlew test --info # running our test with info to check the results
+    - name: run tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck
