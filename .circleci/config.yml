@@ -51,4 +51,8 @@ workflows:
       - android/run-ui-tests:
           # Use pre-steps and post-steps if necessary
           # to execute custom steps before and afer any of the built-in steps
+          
+            - run:
+                name: chmod permissions
+                command: chmod +x ./gradlew
           system-image: system-images;android-29;default;x86
