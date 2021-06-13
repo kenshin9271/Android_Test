@@ -22,9 +22,10 @@ jobs:
      
     test2:
       docker:
-        - image: circleci/android:api-30-node
+        - image: inv3rse/android-sdk-27:1.0.3
       steps:
         - checkout
+        - run: emulator -verbose -avd android-26 -no-window -no-audio -gpu off
         
               
               
