@@ -13,4 +13,5 @@ jobs:
       - checkout
       - run: appium -v
       - run: node -v
+      - run: sudo apt-get install python3-pip
       - run: python --version
