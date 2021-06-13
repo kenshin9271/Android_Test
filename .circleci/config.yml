@@ -15,4 +15,5 @@ jobs:
         - run: node -v
         - run: python3 --version
         - run: npm i appium-doctor
+        - run: appium-doctor
      
