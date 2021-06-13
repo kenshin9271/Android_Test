@@ -6,10 +6,9 @@ workflows:
       - test
       
 jobs:
-  build:
     test:
       docker:
-          - image: appium/appium:latest
+        - image: appium/appium:latest
       steps:
         - checkout
         - run: appium -v
