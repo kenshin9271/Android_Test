@@ -24,17 +24,21 @@
 version: 2.1
 orbs:
   android: circleci/android@1.0.3
+  
 workflows:
-  test:
+  test-deploy:
     jobs:
-             
-    - run:
-          name: Download Dependencies
-          command: |
-            sudo chmod +x ./gradlew
-            ./gradlew androidDependencies 
-
-
-              
-              
-              
+      - test
+      
+jobs:
+    test:
+      executor:
+            name: android/android-machine
+            resource-class: large
+      steps:
+        - checkout
+        - run:
+            name: Download Dependencies
+            command: |
+              sudo chmod +x ./gradlew
+              ./gradlew androidDependencies 
