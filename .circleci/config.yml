@@ -6,7 +6,6 @@ workflows:
   test-deploy:
     jobs:
       - test
-      - test2
       
 jobs:
     test:
