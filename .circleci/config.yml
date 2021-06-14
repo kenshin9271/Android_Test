@@ -24,11 +24,6 @@
 # .circleci/config.yml
 version: 2.1
 
-dependencies:
-override:
-- echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-21.1.2,android-21,extra-google-m2repository,extra-google-google_play_services,extra-android-support
-- chmod +x gradlew
-- ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies
 
 orbs:
   android: circleci/android@1.0
@@ -40,6 +35,8 @@ jobs:
       resource-class: large
     steps:
       - checkout
+      - run: chmod +x gradlew
+      - run: ./gradlew assemble
       # Creates an AVD and starts up the emulator using the AVD.
       # While the emulator is starting up, the gradle cache will
       # be restored and the Android app will be assembled.
