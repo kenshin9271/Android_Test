@@ -28,6 +28,11 @@ workflows:
   test:
     jobs:
       - android/run-ui-tests:
+          - run:
+              name: Download Dependencies
+              command: |
+                sudo chmod +x ./gradlew
+                ./gradlew androidDependencies 
           system-image: system-images;android-28;default;x86
 
               
