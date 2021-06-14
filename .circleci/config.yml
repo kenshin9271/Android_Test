@@ -20,31 +20,15 @@
 #         - run: appium-doctor
 #         - run: appium
         
-version: '2.1'
+
+version: 2.1
 orbs:
-  android: circleci/android@1.0
-jobs:
-  test:
-    executor:
-      name: android/android-machine
-      resource-class: large
-    steps:
-      - checkout
-      - android/create-avd:
-          avd-name: myavd
-          install: true
-          system-image: system-images;android-29;default;x86
-      - android/start-emulator:
-          avd-name: myavd
-          no-window: true
-          restore-gradle-cache-prefix: v1a
-      - android/run-tests
-      - android/save-gradle-cache:
-          cache-prefix: v1a
+  android: circleci/android@1.0.3
 workflows:
   test:
     jobs:
-      - test
+      - android/run-ui-tests:
+          system-image: system-images;android-28;default;x86
 
               
               
