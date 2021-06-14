@@ -5,7 +5,7 @@ orbs:
 workflows:
   test-deploy:
     jobs:
-#       - test
+      - test
       - test2
       
 jobs:
@@ -19,13 +19,8 @@ jobs:
         - run: python3 --version
         - run: npm install -g appium-doctor
         - run: appium-doctor
-     
-    test2:
-      docker:
-        - image: inv3rse/android-sdk-27:1.0.3
-      steps:
-        - checkout
-        - run: emulator -verbose -avd android-26 -no-window -no-audio -gpu off
+        - run: appium
+  
         
               
               
