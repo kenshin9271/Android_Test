@@ -39,7 +39,6 @@ jobs:
         - checkout
         - run:
             name: Download Dependencies
-            command: |
-              sudo chmod +x ./gradlew
+            command: ./gradlew androidDependencies
         - android/start-emulator-and-run-tests:
             system-image: system-images;android-29;default;x86
