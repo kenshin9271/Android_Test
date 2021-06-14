@@ -23,6 +23,8 @@ jobs:
     test2:
       docker:
         - image: docker pull budtmo/docker-android-x86-8.1:latest
+      steps:
+        - checkout
         
               
               
