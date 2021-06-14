@@ -5,7 +5,7 @@ orbs:
 workflows:
   test-deploy:
     jobs:
-      - test
+      - test2
       
 jobs:
     test:
@@ -19,7 +19,10 @@ jobs:
         - run: npm install -g appium-doctor
         - run: appium-doctor
         - run: appium
-  
+        
+    test2:
+      docker:
+        - image: docker pull budtmo/docker-android-x86-8.1:latest
         
               
               
