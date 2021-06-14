@@ -25,7 +25,7 @@ jobs:
         - image: budtmo/docker-android-x86-8.1:latest
       steps:
         - checkout
-        
+        - run: adb devices
               
               
               
