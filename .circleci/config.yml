@@ -41,4 +41,3 @@ jobs:
             name: Download Dependencies
             command: |
               sudo chmod +x ./gradlew
-              ./gradlew androidDependencies 
